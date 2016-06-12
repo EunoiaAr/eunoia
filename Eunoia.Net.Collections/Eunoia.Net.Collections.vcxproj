@@ -133,6 +133,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="TcpTable.h" />
+    <ClInclude Include="TcpTable2.h" />
     <ClInclude Include="TcpTableRow.h" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TcpTable.cpp" />
+    <ClCompile Include="TcpTable2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

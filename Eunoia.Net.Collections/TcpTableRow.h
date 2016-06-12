@@ -15,6 +15,9 @@ namespace Eunoia
                 String^ RemoteAddress;
                 UInt16  RemotePort;
                 int     State;
+                UInt32  OwningPid;
+                UInt32  OffloadState;
+
                 String^ GetStateString()
                 {
                     switch (State) {
@@ -44,6 +47,21 @@ namespace Eunoia
                         return "DELETE-TCB";
                     default:
                         return "UNKNOWN dwState value";
+                    }
+                }
+                String^ GetOffloadStateString() 
+                {
+                    switch (OffloadState) {
+                    case TcpConnectionOffloadStateInHost:
+                        return "Owned by the network stack and not offloaded";
+                    case TcpConnectionOffloadStateOffloading:
+                        return "In the process of being offloaded";
+                    case TcpConnectionOffloadStateOffloaded:
+                        return "Offloaded to the network interface control";
+                    case TcpConnectionOffloadStateUploading:
+                        return "In the process of being uploaded back to the network stack";
+                    default:
+                        return "UNKNOWN Offload state value";
                     }
                 }
             };
