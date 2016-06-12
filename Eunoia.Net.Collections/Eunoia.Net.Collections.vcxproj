@@ -135,6 +135,7 @@
     <ClInclude Include="TcpTable.h" />
     <ClInclude Include="TcpTable2.h" />
     <ClInclude Include="TcpTableRow.h" />
+    <ClInclude Include="UdpTable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -146,6 +147,7 @@
     </ClCompile>
     <ClCompile Include="TcpTable.cpp" />
     <ClCompile Include="TcpTable2.cpp" />
+    <ClCompile Include="UdpTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
