@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eunoia.Net.Collections", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ns", "ns\ns.csproj", "{DAB238A8-E965-420F-9F11-D472EA89E0E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wns", "wns\wns.csproj", "{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,18 @@ Global
 		{DAB238A8-E965-420F-9F11-D472EA89E0E1}.Release|x64.Build.0 = Release|Any CPU
 		{DAB238A8-E965-420F-9F11-D472EA89E0E1}.Release|x86.ActiveCfg = Release|Any CPU
 		{DAB238A8-E965-420F-9F11-D472EA89E0E1}.Release|x86.Build.0 = Release|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Debug|x64.Build.0 = Debug|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Debug|x86.Build.0 = Debug|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x64.ActiveCfg = Release|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x64.Build.0 = Release|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x86.ActiveCfg = Release|Any CPU
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
