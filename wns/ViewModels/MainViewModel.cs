@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.Linq;
 using System.Threading;
-using Eunoia.Net.Collections;
 using System.Windows.Threading;
+using Eunoia.Net.Collections;
 
-namespace wns
+namespace wns.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -21,7 +21,7 @@ namespace wns
             while (true) {
                 if (PropertyChanged == null)
                     break;
-                var rows = _tcpTable.Select(r => new MainViewModelRow {
+                var rows = _tcpTable.Select(r => new MainViewModelTcpRow {
                     LocalAddress    = r.LocalAddress,
                     LocalPort       = r.LocalPort,
                     RemoteAddress   = r.RemoteAddress,
@@ -30,18 +30,18 @@ namespace wns
                     OwningPid       = r.OwningPid,
                     OffLoadState    = r.GetOffloadStateString()
                 }).ToArray();
-                if (Rows == null || !rows.SequenceEqual(Rows)) {
+                if (TcpRows == null || !rows.SequenceEqual(TcpRows)) {
                     Dispatcher.CurrentDispatcher.Invoke(() => {
-                        Rows = rows;
+                        TcpRows = rows;
                         if (PropertyChanged != null)
-                            PropertyChanged(this, new PropertyChangedEventArgs("Rows"));
+                            PropertyChanged(this, new PropertyChangedEventArgs("TcpRows"));
                     });
                 }
                 Thread.Sleep(1000);
             }
         }
 
-        public MainViewModelRow[] Rows { get; set; }
+        public MainViewModelTcpRow[] TcpRows { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

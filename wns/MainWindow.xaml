@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:wns"
+        xmlns:ViewModels="clr-namespace:wns.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="825">
     <Window.Resources>
-        <local:MainViewModel x:Key="vm"></local:MainViewModel>
+        <ViewModels:MainViewModel x:Key="vm"></ViewModels:MainViewModel>
     </Window.Resources>
     <DataGrid DataContext="{StaticResource vm}" ItemsSource="{Binding Rows}" AutoGenerateColumns="True">
         
