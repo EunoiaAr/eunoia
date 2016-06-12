@@ -10,18 +10,21 @@ namespace wns.ViewModels
     {
         public MainViewModel()
         {
-            _tcpTable = new TcpTable2();
-
-            _thread = new Thread(RefreshThread);
+            _tcpTable   = new TcpTable2();
+            _udpTable   = new UdpTable();
+            _thread     = new Thread(RefreshThread);
             _thread.Start();
         }
+
+        public MainViewModelTcpRow[] TcpRows { get; set; }
+        public MainViewModelUdpRow[] UdpRows { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         void RefreshThread()
         {
             while (true) {
-                if (PropertyChanged == null)
-                    break;
-                var rows = _tcpTable.Select(r => new MainViewModelTcpRow {
+                var tcpRows = _tcpTable.Select(r => new MainViewModelTcpRow {
                     LocalAddress    = r.LocalAddress,
                     LocalPort       = r.LocalPort,
                     RemoteAddress   = r.RemoteAddress,
@@ -30,22 +33,32 @@ namespace wns.ViewModels
                     OwningPid       = r.OwningPid,
                     OffLoadState    = r.GetOffloadStateString()
                 }).ToArray();
-                if (TcpRows == null || !rows.SequenceEqual(TcpRows)) {
+                var udpRows = _udpTable.Select(r => new MainViewModelUdpRow {
+                    LocalAddress    = r.LocalAddress,
+                    LocalPort       = r.LocalPort
+                }).ToArray();
+                if (TcpRows == null || !tcpRows.SequenceEqual(TcpRows)) {
                     Dispatcher.CurrentDispatcher.Invoke(() => {
-                        TcpRows = rows;
+                        TcpRows = tcpRows;
                         if (PropertyChanged != null)
                             PropertyChanged(this, new PropertyChangedEventArgs("TcpRows"));
                     });
                 }
+                if (UdpRows == null || !udpRows.SequenceEqual(UdpRows)) {
+                    Dispatcher.CurrentDispatcher.Invoke(() => {
+                        UdpRows = udpRows;
+                        if (PropertyChanged != null)
+                            PropertyChanged(this, new PropertyChangedEventArgs("UdpRows"));
+                    });
+                }
                 Thread.Sleep(1000);
+                if (PropertyChanged == null)
+                    break;
             }
         }
 
-        public MainViewModelTcpRow[] TcpRows { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private TcpTable2   _tcpTable;
-        private Thread      _thread;
+        TcpTable2   _tcpTable;
+        Thread      _thread;
+        UdpTable    _udpTable;
     }
 }

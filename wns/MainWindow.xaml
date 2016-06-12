@@ -9,7 +9,14 @@
     <Window.Resources>
         <ViewModels:MainViewModel x:Key="vm"></ViewModels:MainViewModel>
     </Window.Resources>
-    <DataGrid DataContext="{StaticResource vm}" ItemsSource="{Binding Rows}" AutoGenerateColumns="True">
-        
-    </DataGrid>
+    <DockPanel DataContext="{StaticResource vm}">
+        <TabControl>
+            <TabItem Header="Tcp values">
+                <DataGrid ItemsSource="{Binding TcpRows}" AutoGenerateColumns="True"/>
+            </TabItem>
+            <TabItem Header="Udp Values">
+                <DataGrid ItemsSource="{Binding UdpRows}" AutoGenerateColumns="True"/>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
