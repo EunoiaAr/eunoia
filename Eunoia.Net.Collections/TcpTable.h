@@ -9,6 +9,7 @@ namespace Eunoia
     {
         namespace Collections
         {
+            // see: http://stackoverflow.com/a/956252/41236
             public ref class TcpTable : public Generic::IEnumerable<TcpTableRow>
             {
             public:
