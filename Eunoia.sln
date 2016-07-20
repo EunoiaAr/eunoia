@@ -1,13 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eunoia.Net.Collections", "Eunoia.Net.Collections\Eunoia.Net.Collections.vcxproj", "{5E76144C-6DE0-4A0A-9700-EEFC1F25D56E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ns", "ns\ns.csproj", "{DAB238A8-E965-420F-9F11-D472EA89E0E1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{AE106128-8E29-459D-A24F-377E834A2B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wns", "wns\wns.csproj", "{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net.Collections", "Net.Collections", "{EF3A34C3-5DE2-4662-9EE7-E0B49FA6FEE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ns", "Samples\Net.Collections\ns\ns.csproj", "{DAB238A8-E965-420F-9F11-D472EA89E0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wns", "Samples\Net.Collections\wns\wns.csproj", "{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{65FA6E02-56E5-42F4-9D78-F4EC7E044D25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Processes", "Processes", "{4C9738A1-0C43-4126-889C-325EC36ACF8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpawnAndWait", "Samples\System\Process\SpawnAndWait\SpawnAndWait.csproj", "{E43AFDFD-C08A-4067-BD41-F8C9109BF416}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,8 +51,24 @@ Global
 		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x64.Build.0 = Release|x64
 		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x86.ActiveCfg = Release|x86
 		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18}.Release|x86.Build.0 = Release|x86
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Debug|x64.Build.0 = Debug|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Debug|x86.Build.0 = Debug|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Release|x64.ActiveCfg = Release|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Release|x64.Build.0 = Release|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Release|x86.ActiveCfg = Release|Any CPU
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF3A34C3-5DE2-4662-9EE7-E0B49FA6FEE0} = {AE106128-8E29-459D-A24F-377E834A2B41}
+		{DAB238A8-E965-420F-9F11-D472EA89E0E1} = {EF3A34C3-5DE2-4662-9EE7-E0B49FA6FEE0}
+		{F84F76D6-CF1A-42EE-B013-4056F8EB9B18} = {EF3A34C3-5DE2-4662-9EE7-E0B49FA6FEE0}
+		{65FA6E02-56E5-42F4-9D78-F4EC7E044D25} = {AE106128-8E29-459D-A24F-377E834A2B41}
+		{4C9738A1-0C43-4126-889C-325EC36ACF8C} = {65FA6E02-56E5-42F4-9D78-F4EC7E044D25}
+		{E43AFDFD-C08A-4067-BD41-F8C9109BF416} = {4C9738A1-0C43-4126-889C-325EC36ACF8C}
 	EndGlobalSection
 EndGlobal
