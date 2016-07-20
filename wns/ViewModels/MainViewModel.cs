@@ -25,14 +25,15 @@ namespace wns.ViewModels
         {
             while (true) {
                 var tcpRows = _tcpTable.Select(r => new MainViewModelTcpRow {
-                    LocalAddress    = r.LocalAddress,
-                    LocalPort       = r.LocalPort,
-                    RemoteAddress   = r.RemoteAddress,
-                    RemotePort      = r.RemotePort,
-                    State           = r.GetStateString(),
-                    OwningPid       = r.OwningPid,
-                    OffLoadState    = r.GetOffloadStateString()
-                }).ToArray();
+                                                    LocalAddress    = r.LocalAddress,
+                                                    LocalPort       = r.LocalPort,
+                                                    RemoteAddress   = r.RemoteAddress,
+                                                    RemotePort      = r.RemotePort,
+                                                    State           = r.GetStateString(),
+                                                    OwningPid       = r.OwningPid,
+                                                    OffLoadState    = r.GetOffloadStateString()
+                                                })
+                                       .ToArray();
                 var udpRows = _udpTable.Select(r => new MainViewModelUdpRow {
                     LocalAddress    = r.LocalAddress,
                     LocalPort       = r.LocalPort
@@ -51,7 +52,7 @@ namespace wns.ViewModels
                             PropertyChanged(this, new PropertyChangedEventArgs("UdpRows"));
                     });
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 if (PropertyChanged == null)
                     break;
             }

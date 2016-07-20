@@ -19,23 +19,23 @@ namespace Eunoia
                 return gcnew TcpTableIterator();
             }
 
+            // see: https://msdn.microsoft.com/en-us/library/windows/desktop/aa366026(v=vs.85).aspx
             TcpTable::TcpTableIterator::TcpTableIterator()
             {
-                PMIB_TCPTABLE   pTcpTable = (MIB_TCPTABLE *)MALLOC(sizeof(MIB_TCPTABLE));
+                DWORD           dwSize = sizeof(MIB_TCPTABLE);
+                PMIB_TCPTABLE   pTcpTable = (MIB_TCPTABLE *) MALLOC(dwSize);
 
                 if (pTcpTable == NULL) {
                     throw gcnew ApplicationException("Error allocating memory for tcpTable");
                 }
 
-                DWORD           dwSize = sizeof(MIB_TCPTABLE);
                 DWORD           dwRetVal = 0;
-                struct in_addr  IpAddr;
 
                 // Make an initial call to GetTcpTable to
                 // get the necessary size into the dwSize variable
                 if ((dwRetVal = GetTcpTable(pTcpTable, &dwSize, TRUE)) == ERROR_INSUFFICIENT_BUFFER) {
                     FREE(pTcpTable);
-                    pTcpTable = (MIB_TCPTABLE *)MALLOC(dwSize);
+                    pTcpTable = (MIB_TCPTABLE *) MALLOC(dwSize);
                     if (pTcpTable == NULL) {
                         throw gcnew ApplicationException("insufficient memory for tcpTable");
                     }
@@ -46,15 +46,16 @@ namespace Eunoia
                     if ((dwRetVal = GetTcpTable(pTcpTable, &dwSize, TRUE)) == NO_ERROR) {
                         _rows = gcnew cli::array<TcpTableRow>(pTcpTable->dwNumEntries);
 
+                        struct in_addr  IpAddr;
                         for (int i = 0; i < (int)pTcpTable->dwNumEntries; i++) {
-                            IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwLocalAddr;
-                            _rows[i].LocalAddress = gcnew String(inet_ntoa(IpAddr));
+                            IpAddr.S_un.S_addr		= (u_long)pTcpTable->table[i].dwLocalAddr;
+                            _rows[i].LocalAddress	= gcnew String(inet_ntoa(IpAddr));
 
-                            IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwRemoteAddr;
-                            _rows[i].RemoteAddress = gcnew String(inet_ntoa(IpAddr));
-                            _rows[i].State = pTcpTable->table[i].dwState;
-                            _rows[i].LocalPort = ntohs((u_short)pTcpTable->table[i].dwLocalPort);
-                            _rows[i].RemotePort = ntohs((u_short)pTcpTable->table[i].dwRemotePort);
+                            IpAddr.S_un.S_addr		= (u_long)pTcpTable->table[i].dwRemoteAddr;
+                            _rows[i].RemoteAddress	= gcnew String(inet_ntoa(IpAddr));
+                            _rows[i].State			= pTcpTable->table[i].dwState;
+                            _rows[i].LocalPort		= ntohs((u_short)pTcpTable->table[i].dwLocalPort);
+                            _rows[i].RemotePort		= ntohs((u_short)pTcpTable->table[i].dwRemotePort);
                         }
                     }
                     else {

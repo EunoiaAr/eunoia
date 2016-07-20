@@ -18,13 +18,13 @@ namespace Eunoia
 
             TcpTable2::TcpTableIterator::TcpTableIterator()
             {
-                PMIB_TCPTABLE2   pTcpTable = (MIB_TCPTABLE2 *)MALLOC(sizeof(MIB_TCPTABLE2));
+                DWORD			dwSize      = sizeof(MIB_TCPTABLE2);
+                PMIB_TCPTABLE2  pTcpTable	= (MIB_TCPTABLE2 *) MALLOC(dwSize);
 
                 if (pTcpTable == NULL) {
                     throw gcnew ApplicationException("Error allocating memory for tcpTable");
                 }
 
-                DWORD   dwSize      = sizeof(MIB_TCPTABLE2);
                 DWORD   dwRetVal    = 0;
 
                 // Make an initial call to GetTcpTable to
