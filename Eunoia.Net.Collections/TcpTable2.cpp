@@ -51,7 +51,7 @@ namespace Eunoia
 
                             IpAddr.S_un.S_addr      = (u_long) row.dwRemoteAddr;
                             _rows[i].RemoteAddress  = gcnew String(inet_ntoa(IpAddr));
-                            _rows[i].State          = row.dwState;
+                            _rows[i].State          = (TcpConnState)Enum::Parse(TcpConnState::typeid, row.dwState.ToString());
                             _rows[i].LocalPort      = ntohs((u_short)row.dwLocalPort);
                             _rows[i].RemotePort     = ntohs((u_short)row.dwRemotePort);
                             _rows[i].OwningPid      = row.dwOwningPid;

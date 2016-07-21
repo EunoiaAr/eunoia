@@ -47,14 +47,16 @@ namespace Eunoia
                         _rows = gcnew cli::array<TcpTableRow>(pTcpTable->dwNumEntries);
 
                         for (int i = 0; i < (int)pTcpTable->dwNumEntries; i++) {
-                            IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwLocalAddr;
-                            _rows[i].LocalAddress = gcnew String(inet_ntoa(IpAddr));
+                            MIB_TCPROW& row         = pTcpTable->table[i];
 
-                            IpAddr.S_un.S_addr = (u_long)pTcpTable->table[i].dwRemoteAddr;
-                            _rows[i].RemoteAddress = gcnew String(inet_ntoa(IpAddr));
-                            _rows[i].State = pTcpTable->table[i].dwState;
-                            _rows[i].LocalPort = ntohs((u_short)pTcpTable->table[i].dwLocalPort);
-                            _rows[i].RemotePort = ntohs((u_short)pTcpTable->table[i].dwRemotePort);
+                            IpAddr.S_un.S_addr      = (u_long)row.dwLocalAddr;
+                            _rows[i].LocalAddress   = gcnew String(inet_ntoa(IpAddr));
+
+                            IpAddr.S_un.S_addr      = (u_long)row.dwRemoteAddr;
+                            _rows[i].RemoteAddress  = gcnew String(inet_ntoa(IpAddr));
+                            _rows[i].State          = (TcpConnState) Enum::Parse(TcpConnState::typeid, row.dwState.ToString());
+                            _rows[i].LocalPort      = ntohs((u_short)row.dwLocalPort);
+                            _rows[i].RemotePort     = ntohs((u_short)row.dwRemotePort);
                         }
                     }
                     else {

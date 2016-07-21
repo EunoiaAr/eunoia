@@ -31,7 +31,9 @@ namespace Eunoia
                 protected:
                     ~UdpTableIterator();
                 private:
-                    virtual property Object^ EnumeratorCurrent { 
+                    // see: http://stackoverflow.com/a/3340386/41236
+                    // and  http://stackoverflow.com/q/2133536/41236
+                    virtual property Object^ EnumeratorCurrent {
                         Object^ get() sealed = System::Collections::IEnumerator::Current::get { return _rows[_current]; }
                     }
                     cli::array<TcpTableRow>^ _rows;

@@ -135,6 +135,7 @@
     <ClInclude Include="TcpTable.h" />
     <ClInclude Include="TcpTable2.h" />
     <ClInclude Include="TcpTableRow.h" />
+    <ClInclude Include="TcpConnState.h" />
     <ClInclude Include="UdpTable.h" />
   </ItemGroup>
   <ItemGroup>

@@ -33,6 +33,9 @@
     <ClInclude Include="UdpTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TcpConnState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">

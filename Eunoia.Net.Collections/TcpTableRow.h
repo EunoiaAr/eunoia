@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TcpConnState.h"
+
 using namespace System;
 
 namespace Eunoia
@@ -10,40 +12,40 @@ namespace Eunoia
         {
             public value struct TcpTableRow
             {
-                String^ LocalAddress;
-                UInt16  LocalPort;
-                String^ RemoteAddress;
-                UInt16  RemotePort;
-                int     State;
-                UInt32  OwningPid;
-                UInt32  OffloadState;
+                String^         LocalAddress;
+                UInt16          LocalPort;
+                String^         RemoteAddress;
+                UInt16          RemotePort;
+                TcpConnState    State;
+                UInt32          OwningPid;
+                UInt32          OffloadState;
 
                 String^ GetStateString()
                 {
                     switch (State) {
-                    case MIB_TCP_STATE_CLOSED:
+                    case TcpConnState::Closed:
                         return "CLOSED";
-                    case MIB_TCP_STATE_LISTEN:
+                    case TcpConnState::Listen:
                         return "LISTEN";
-                    case MIB_TCP_STATE_SYN_SENT:
+                    case TcpConnState::SynSent:
                         return "SYN-SENT";
-                    case MIB_TCP_STATE_SYN_RCVD:
+                    case TcpConnState::SynRcvd:
                         return "SYN-RECEIVED";
-                    case MIB_TCP_STATE_ESTAB:
+                    case TcpConnState::Estab:
                         return "ESTABLISHED";
-                    case MIB_TCP_STATE_FIN_WAIT1:
+                    case TcpConnState::FinWait1:
                         return "FIN-WAIT-1";
-                    case MIB_TCP_STATE_FIN_WAIT2:
+                    case TcpConnState::FinWait2:
                         return "FIN-WAIT-2 ";
-                    case MIB_TCP_STATE_CLOSE_WAIT:
+                    case TcpConnState::CloseWait:
                         return "CLOSE-WAIT";
-                    case MIB_TCP_STATE_CLOSING:
+                    case TcpConnState::Closing:
                         return "CLOSING";
-                    case MIB_TCP_STATE_LAST_ACK:
+                    case TcpConnState::LastAck:
                         return "LAST-ACK";
-                    case MIB_TCP_STATE_TIME_WAIT:
+                    case TcpConnState::TimeWait:
                         return "TIME-WAIT";
-                    case MIB_TCP_STATE_DELETE_TCB:
+                    case TcpConnState::DeleteTcb:
                         return "DELETE-TCB";
                     default:
                         return "UNKNOWN dwState value";
