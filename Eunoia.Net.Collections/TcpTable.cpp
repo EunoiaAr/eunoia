@@ -19,23 +19,23 @@ namespace Eunoia
                 return gcnew TcpTableIterator();
             }
 
+            // see: https://msdn.microsoft.com/en-us/library/windows/desktop/aa366026(v=vs.85).aspx
             TcpTable::TcpTableIterator::TcpTableIterator()
             {
-                PMIB_TCPTABLE   pTcpTable = (MIB_TCPTABLE *)MALLOC(sizeof(MIB_TCPTABLE));
+                DWORD           dwSize      = sizeof(MIB_TCPTABLE);
+                PMIB_TCPTABLE   pTcpTable   = (MIB_TCPTABLE *) MALLOC(dwSize);
 
                 if (pTcpTable == NULL) {
                     throw gcnew ApplicationException("Error allocating memory for tcpTable");
                 }
 
-                DWORD           dwSize = sizeof(MIB_TCPTABLE);
                 DWORD           dwRetVal = 0;
-                struct in_addr  IpAddr;
 
                 // Make an initial call to GetTcpTable to
                 // get the necessary size into the dwSize variable
                 if ((dwRetVal = GetTcpTable(pTcpTable, &dwSize, TRUE)) == ERROR_INSUFFICIENT_BUFFER) {
                     FREE(pTcpTable);
-                    pTcpTable = (MIB_TCPTABLE *)MALLOC(dwSize);
+                    pTcpTable = (MIB_TCPTABLE *) MALLOC(dwSize);
                     if (pTcpTable == NULL) {
                         throw gcnew ApplicationException("insufficient memory for tcpTable");
                     }
@@ -46,6 +46,7 @@ namespace Eunoia
                     if ((dwRetVal = GetTcpTable(pTcpTable, &dwSize, TRUE)) == NO_ERROR) {
                         _rows = gcnew cli::array<TcpTableRow>(pTcpTable->dwNumEntries);
 
+                        struct in_addr  IpAddr;
                         for (int i = 0; i < (int)pTcpTable->dwNumEntries; i++) {
                             MIB_TCPROW& row         = pTcpTable->table[i];
 

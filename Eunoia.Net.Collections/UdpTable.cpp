@@ -27,8 +27,8 @@ namespace Eunoia
                     throw gcnew ApplicationException("Error allocating memory for UdpTable");
                 }
 
-                DWORD           dwSize = sizeof(MIB_UDPTABLE);
-                DWORD           dwRetVal = 0;
+                DWORD           dwSize      = sizeof(MIB_UDPTABLE);
+                DWORD           dwRetVal    = 0;
                 struct in_addr  IpAddr;
 
                 // Make an initial call to GetUdpTable to
