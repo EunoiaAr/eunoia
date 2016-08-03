@@ -11,7 +11,9 @@ $nuspecPath     = '.\Eunoia.Net.Collections.dll.nuspec'
 $libVersion     = Get-Item $libPath | % {[Reflection.AssemblyName]::GetAssemblyName($_.FullName).Version.ToString() }
 $libVersion
 Copy-Item $libPath lib\4.0 
-$xml            = [xml] (Get-Content $nuspecPath)
+$xml            = New-Object xml
+$xml.PreserveWhitespace = $true
+$xml.Load($nuspecPath)
 
 $xml.package.metadata.version = $libVersion.ToString()
 if (![String]::IsNullOrWhiteSpace($releaseNotes)) { 
