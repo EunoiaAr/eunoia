@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Eunoia.Net.Collections</id>
+    <version>1.0.6057.28951</version>
+    <authors>eugenio.miro</authors>
+    <owners>eugenio.miro</owners>
+    <projectUrl>https://github.com/eunoiaar/eunoia</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>netstat data wrapped as IEnumerable collections</description>
+    <releaseNotes>Digitally signed library.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>netstat</tags>
+  </metadata>
+</package>
